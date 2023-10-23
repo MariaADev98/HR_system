@@ -1,15 +1,13 @@
+from django.urls import path, register_converter
+from . import views
+from . import converters
 
-from django.contrib import admin
-from django.urls import path, include
-
-from .views import index, about_me
+register_converter(converters.FourDigitYearConverter, 'year4')
 
 urlpatterns = [
-   path('', index),
-   path('about/<slug:what>', about_me),
-
-
+    path('', views.index, name='home'),
+    path('about/', views.about, name='about'),
+    path('cats/<int:cat_id>', views.categories, name='cats_id'),
+    path('cats/<slug:cat_slug>', views.categories_by_slug, name='cats'),
+    path('archive/<year4:year>/', views.archive, name='archive'),
 ]
-
-
-
