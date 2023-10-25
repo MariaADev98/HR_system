@@ -2,7 +2,11 @@ from django.http import HttpResponse, HttpResponseNotFound, Http404
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
 
-menu = ['О сайте', 'Добавить статью', 'Обратная связь', 'Войти']
+menu = [{'title': 'О сайте', 'url_name': 'about'},
+        {'title': 'Добавить статью', 'url_name': 'add_page'},
+        {'title': 'Обратная связь', 'url_name': 'contact'},
+        {'title': 'Войти', 'url_name': 'login'},
+        ]
 
 data_db = [
     {'id': 1, 'title': 'кандидат 1', 'content': 'Биография Кандидата 1', 'is_published': True},
@@ -26,6 +30,18 @@ def about(request):
     return render(request, 'hr_app/about.html', {'title': 'О сайте'})
 
 
+def tasks(request):
+    return render(request, 'hr_app/tasks.html', {'title': 'Задачи'})
+
+
+def forms(request):
+    return render(request, 'hr_app/forms.html', {'title': 'Анкеты'})
+
+
+def creatform(request):
+    return render(request, 'hr_app/creatform.html', {'title': 'Создание анкеты'})
+
+
 def categories(request, cat_id):
     return HttpResponse(f'<h1>Статьи по категориям</h1><p>id:{cat_id}</p>')
 
@@ -41,6 +57,22 @@ def archive(request, year):
         return redirect('home')
 
     return HttpResponse(f'<h1>Архив по годам</h1><p>{year}</p>')
+
+
+def show_post(request, post_id):
+    return HttpResponse(f'Отображение статьи с id = {post_id}')
+
+
+def addpage(request):
+    return HttpResponse('Добавление статьи')
+
+
+def contact(request):
+    return HttpResponse('Обратная связь')
+
+
+def login(request):
+    return HttpResponse('Авторизация')
 
 
 def page_not_found(request, exeption):
