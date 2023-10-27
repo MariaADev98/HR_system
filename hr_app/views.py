@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
 
 menu = [{'title': 'О сайте', 'url_name': 'about'},
-        {'title': 'Добавить статью', 'url_name': 'add_page'},
+        {'title': 'Добавить статью', 'url_name': 'addpage'},
         {'title': 'Обратная связь', 'url_name': 'contact'},
         {'title': 'Войти', 'url_name': 'login'},
         ]
@@ -38,8 +38,8 @@ def forms(request):
     return render(request, 'hr_app/forms.html', {'title': 'Анкеты'})
 
 
-def creatform(request):
-    return render(request, 'hr_app/creatform.html', {'title': 'Создание анкеты'})
+def create_form(request):
+    return render(request, 'hr_app/create_form.html', {'title': 'Создание анкеты'})
 
 
 def categories(request, cat_id):
