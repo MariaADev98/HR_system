@@ -1,22 +1,14 @@
-<!DOCTYPE html>
-<head>
-    <meta charset="UTF-8">
-    <title>{{ title }}</title>
-</head>
-<body>
-<ul>
-    <li><a href="{% url 'home' %}">Главная страница</a></li>
-    {% for m in menu %}
-    <li>
-        <a href="{% url m.url_name %}">{{ m.title }}</a>
-    </li>
-    {% endfor %}
-</ul>
-<p>{{ menu|join:' | ' }}</p>
-<h1>{{ title }}</h1>
+<h1>{{ title}}</h1>>
+
+
+{% include 'hr_app/includes/nav.html' %}
+
+
+
 
 <ul>
     {% for p in posts %}
+    {% if p.is_published %}
     <li>
        <h2>{{ p.title }}</h2>
        <p>{{ p.content}}</p>
@@ -25,7 +17,10 @@
        <hr>
        {% endif %}
     </li>
+    {% endif %}
     {% endfor %}
-</ul>>
-</body>
-</html>
+</ul>
+
+
+{% include 'hr_app/includes/nav.html'%}
+
