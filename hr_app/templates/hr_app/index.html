@@ -1,19 +1,24 @@
+{% extends 'base.html' %}
+<!--{% include 'hr_app/includes/nav.html' %}-->
 
-{% include 'hr_app/includes/nav.html' %}
+<!--<ul class='ul_class'>-->
+<!--    {% for p in posts %}-->
+<!--    {% if p.is_published %}-->
+<!--    <li>-->
+<!--       <h2>{{ p.title }}</h2>-->
+<!--       <p>{{ p.content}}</p>-->
+<!--        <p><a href="{%url 'post' p.id%}">Читать пост</a><p>-->
+<!--       {% if not forloop.last %}-->
+<!--       <hr>-->
+<!--       {% endif %}-->
+<!--    </li>-->
+<!--    {% endif %}-->
+<!--    {% endfor %}-->
+<!--</ul>>-->
+{% block content %}
+<h1>{{ title}}</h1>
+<p></p>
 
-<ul>
-    {% for p in posts %}
-    {% if p.is_published %}
-    <li>
-       <h2>{{ p.title }}</h2>
-       <p>{{ p.content}}</p>
-        <p><a href="{%url 'post' p.id%}">Читать пост</a><p>
-       {% if not forloop.last %}
-       <hr>
-       {% endif %}
-    </li>
-    {% endif %}
-    {% endfor %}
-</ul>>
+{% endblock %}
 
-{% include 'hr_app/includes/nav.html' %}
+<!--{% include 'hr_app/includes/nav.html' %}-->

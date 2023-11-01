@@ -6,6 +6,9 @@ menu = [{'title': 'О сайте', 'url_name': 'about'},
         {'title': 'Добавить статью', 'url_name': 'addpage'},
         {'title': 'Обратная связь', 'url_name': 'contact'},
         {'title': 'Войти', 'url_name': 'login'},
+        {'title': 'Главная страница', 'url_name':'home'},
+        {'title': 'Задачи', 'url_name':'tasks'},
+
         ]
 
 data_db = [
@@ -18,6 +21,7 @@ data_db = [
 def index(request):
     # t = render_to_string('hr_app/index.html')
     # return HttpResponse(t)
+
     data = {
         'title': 'Главная страница',
         'menu': menu,
@@ -31,15 +35,15 @@ def about(request):
 
 
 def tasks(request):
-    return render(request, 'hr_app/tasks.html', {'title': 'Задачи'})
+    return render(request, 'hr_app/tasks.html', {'title': 'Задачи', 'menu': menu})
 
 
 def forms(request):
-    return render(request, 'hr_app/forms.html', {'title': 'Анкеты'})
+    return render(request, 'hr_app/forms.html', {'title': 'Анкеты', 'menu': menu})
 
 
 def create_form(request):
-    return render(request, 'hr_app/create_form.html', {'title': 'Создание анкеты'})
+    return render(request, 'hr_app/create_form.html', {'title': 'Создание анкеты', 'menu': menu})
 
 
 def categories(request, cat_id):
@@ -64,15 +68,17 @@ def show_post(request, post_id):
 
 
 def addpage(request):
-    return HttpResponse('Добавление статьи')
+    return render(request, 'hr_app/addpage.html', {'title': 'Добавление статьи', 'menu': menu})
 
 
 def contact(request):
-    return HttpResponse('Обратная связь')
+    return render(request, 'hr_app/contact.html', {'title': 'Обратная связь', 'menu': menu})
+
 
 
 def login(request):
-    return HttpResponse('Авторизация')
+    return render(request, 'hr_app/login.html', {'title': 'Авторизация', 'menu': menu})
+
 
 
 def page_not_found(request, exeption):
