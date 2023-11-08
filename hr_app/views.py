@@ -6,8 +6,8 @@ menu = [{'title': 'О сайте', 'url_name': 'about'},
         {'title': 'Добавить статью', 'url_name': 'addpage'},
         {'title': 'Обратная связь', 'url_name': 'contact'},
         {'title': 'Войти', 'url_name': 'login'},
-        {'title': 'Главная страница', 'url_name':'home'},
-        {'title': 'Задачи', 'url_name':'tasks'},
+        {'title': 'Главная страница', 'url_name': 'home'},
+        {'title': 'Задачи', 'url_name': 'tasks'},
 
         ]
 
@@ -75,10 +75,8 @@ def contact(request):
     return render(request, 'hr_app/contact.html', {'title': 'Обратная связь', 'menu': menu})
 
 
-
 def login(request):
     return render(request, 'hr_app/login.html', {'title': 'Авторизация', 'menu': menu})
-
 
 
 def page_not_found(request, exeption):
