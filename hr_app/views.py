@@ -1,6 +1,7 @@
 from django.http import HttpResponse, HttpResponseNotFound, Http404
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
+from .forms import TaskForm
 
 menu = [{'title': 'О сайте', 'url_name': 'about'},
         {'title': 'Добавить статью', 'url_name': 'addpage'},
@@ -21,11 +22,19 @@ data_db = [
 def index(request):
     # t = render_to_string('hr_app/index.html')
     # return HttpResponse(t)
+    if request.method == 'POST':
+        form = TaskForm(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
+    else:
+        form = TaskForm()
+
 
     data = {
         'title': 'Главная страница',
         'menu': menu,
         'posts': data_db,
+        'form': form,
     }
     return render(request, 'hr_app/index.html', context=data)
 
